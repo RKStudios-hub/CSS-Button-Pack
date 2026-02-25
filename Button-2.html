@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kawaii Button</title>
+
+<style>
+:root{
+  --pink1:#ffd6ec;
+  --pink2:#ff9ecf;
+  --pink3:#ff6fb5;
+  --white:#ffffff;
+}
+
+*{box-sizing:border-box;}
+
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#fff5fb,#ffe6f5);
+  font-family:"Comic Sans MS", cursive, sans-serif;
+}
+
+/* BUTTON */
+.kawaii-btn{
+  position:relative;
+  padding:22px 60px;
+  font-size:22px;
+  font-weight:bold;
+  color:#ff4fa3;
+  border:none;
+  border-radius:60px;
+  cursor:pointer;
+  overflow:hidden;
+
+  background:linear-gradient(
+    120deg,
+    var(--white),
+    var(--pink1),
+    var(--white)
+  );
+
+  background-size:200% 200%;
+  animation:shimmer 4s ease infinite;
+
+  box-shadow:
+    0 10px 0 #ffb3d9,
+    0 15px 30px rgba(255,105,180,0.25),
+    inset 0 -4px 8px rgba(255,255,255,0.7);
+
+  transition:all 0.2s ease;
+}
+
+/* Jelly press */
+.kawaii-btn:active{
+  transform:scale(0.92);
+  box-shadow:
+    0 5px 0 #ffb3d9,
+    0 8px 15px rgba(255,105,180,0.2);
+}
+
+/* SHIMMER */
+@keyframes shimmer{
+  0%{ background-position:0% 50%; }
+  50%{ background-position:100% 50%; }
+  100%{ background-position:0% 50%; }
+}
+
+/* FACE */
+.face{
+  display:inline-block;
+  position:relative;
+}
+
+.eye{
+  display:inline-block;
+  animation:blink 4s infinite;
+}
+
+@keyframes blink{
+  0%, 95%, 100%{ transform:scaleY(1); }
+  97%{ transform:scaleY(0.1); }
+}
+
+/* Sparkles */
+.sparkle{
+  position:absolute;
+  width:6px;
+  height:6px;
+  background:var(--pink3);
+  border-radius:50%;
+  opacity:0;
+  pointer-events:none;
+}
+
+@keyframes sparkleFloat{
+  0%{
+    transform:translateY(0) scale(0.5);
+    opacity:1;
+  }
+  100%{
+    transform:translateY(-40px) scale(1.4);
+    opacity:0;
+  }
+}
+
+.kawaii-btn:hover .sparkle{
+  animation:sparkleFloat 1s ease forwards;
+}
+
+.sparkle:nth-child(2){ left:15%; animation-delay:0.1s; }
+.sparkle:nth-child(3){ left:50%; animation-delay:0.2s; }
+.sparkle:nth-child(4){ left:80%; animation-delay:0.3s; }
+
+/* Heart Burst */
+.heart{
+  position:absolute;
+  font-size:18px;
+  opacity:0;
+  pointer-events:none;
+}
+
+@keyframes heartBurst{
+  0%{
+    transform:translateY(0) scale(0.6);
+    opacity:1;
+  }
+  100%{
+    transform:translateY(-60px) scale(1.5);
+    opacity:0;
+  }
+}
+
+.kawaii-btn:focus .heart{
+  animation:heartBurst 1s ease forwards;
+}
+
+.heart:nth-child(5){ left:30%; animation-delay:0.1s; }
+.heart:nth-child(6){ left:60%; animation-delay:0.2s; }
+
+/* Glow Pulse */
+@keyframes pulse{
+  0%{ box-shadow:0 10px 0 #ffb3d9, 0 15px 30px rgba(255,105,180,0.25); }
+  50%{ box-shadow:0 10px 0 #ffb3d9, 0 20px 40px rgba(255,105,180,0.35); }
+  100%{ box-shadow:0 10px 0 #ffb3d9, 0 15px 30px rgba(255,105,180,0.25); }
+}
+
+.kawaii-btn:hover{
+  animation:pulse 2s infinite;
+}
+</style>
+</head>
+
+<body>
+
+<button class="kawaii-btn">
+  <span class="face">
+    <span class="eye">＾</span>◡<span class="eye">＾</span>
+  </span>
+  &nbsp;Click Me♡
+  
+  <!-- Sparkles -->
+  <span class="sparkle"></span>
+  <span class="sparkle"></span>
+  <span class="sparkle"></span>
+
+  <!-- Hearts -->
+  <span class="heart">💗</span>
+  <span class="heart">💖</span>
+</button>
+
+</body>
+</html>
