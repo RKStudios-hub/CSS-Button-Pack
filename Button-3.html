@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premium Dial</title>
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  background:#e8e8e8;
+  font-family:Arial, sans-serif;
+}
+
+/* ===== DIAL CONTAINER ===== */
+.dial-container{
+  position:relative;
+  width:280px;
+  height:280px;
+  filter:drop-shadow(0 25px 35px rgba(0,0,0,0.15));
+}
+
+/* ===== SVG ===== */
+svg{
+  transform:rotate(-90deg);
+}
+
+/* ===== KNOB ===== */
+.knob{
+  position:absolute;
+  width:170px;
+  height:170px;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%) rotate(0deg);
+  border-radius:50%;
+  cursor:pointer;
+  transition:transform 0.08s ease-out;
+
+  background:
+    radial-gradient(circle at 30% 30%, #ffffff 0%, #f0f0f0 40%, #dcdcdc 100%);
+
+  box-shadow:
+    18px 18px 30px rgba(0,0,0,0.15),
+    -12px -12px 25px rgba(255,255,255,0.9),
+    inset 8px 8px 18px rgba(0,0,0,0.08),
+    inset -8px -8px 18px rgba(255,255,255,0.9);
+}
+
+/* INNER CORE */
+.knob::before{
+  content:"";
+  position:absolute;
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  background:
+    radial-gradient(circle at 35% 35%, #fafafa, #e5e5e5);
+  box-shadow:
+    inset 6px 6px 14px rgba(0,0,0,0.08),
+    inset -6px -6px 14px rgba(255,255,255,0.9);
+}
+
+/* Gloss highlight */
+.knob::after{
+  content:"";
+  position:absolute;
+  width:80%;
+  height:40%;
+  top:10%;
+  left:10%;
+  border-radius:50%;
+  background:radial-gradient(circle at 50% 50%,
+              rgba(255,255,255,0.9),
+              rgba(255,255,255,0.2) 60%,
+              transparent 70%);
+  pointer-events:none;
+  opacity:0.6;
+}
+
+/* INNER ARROW */
+.inner-arrow{
+  position:absolute;
+  width:0;
+  height:0;
+  border-left:7px solid transparent;
+  border-right:7px solid transparent;
+  border-bottom:18px solid #ff5e00;
+  top:15px;
+  left:50%;
+  transform:translateX(-50%);
+  filter:drop-shadow(0 3px 3px rgba(0,0,0,0.3));
+}
+
+/* OUTER POINTER */
+.outer-indicator{
+  position:absolute;
+  width:0;
+  height:0;
+  border-left:9px solid transparent;
+  border-right:9px solid transparent;
+  border-bottom:16px solid #ff5e00;
+  top:20px;
+  left:50%;
+  transform:translateX(-50%);
+  filter:drop-shadow(0 3px 4px rgba(0,0,0,0.3));
+}
+
+/* WATERMARK */
+.watermark{
+  margin-top:45px;
+  font-size:14px;
+  color:#555;
+  letter-spacing:1px;
+  opacity:0.85;
+}
+.watermark strong{
+  color:#000;
+}
+</style>
+</head>
+
+<body>
+
+<div class="dial-container">
+
+  <svg width="280" height="280">
+    <!-- Background Ring -->
+    <circle cx="140" cy="140" r="110"
+      stroke="#cfcfcf"
+      stroke-width="24"
+      fill="none"/>
+
+    <!-- Progress Ring -->
+    <circle id="progress"
+      cx="140" cy="140" r="110"
+      stroke="url(#grad)"
+      stroke-width="24"
+      stroke-linecap="round"
+      fill="none"
+      stroke-dasharray="691"
+      stroke-dashoffset="691"
+      style="filter: drop-shadow(0 5px 8px rgba(255,94,0,0.4));"/>
+
+    <defs>
+      <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#ff9a00"/>
+        <stop offset="100%" stop-color="#ff3c00"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <div class="knob" id="knob">
+      <div class="inner-arrow"></div>
+  </div>
+
+  <div class="outer-indicator" id="outerIndicator"></div>
+
+</div>
+
+<div class="watermark">
+  Made with 🖤 by <strong>RK Studios</strong>
+</div>
+
+<script>
+const knob = document.getElementById("knob");
+const progress = document.getElementById("progress");
+const outerIndicator = document.getElementById("outerIndicator");
+
+let isDragging = false;
+let currentAngle = 0;
+
+const radius = 110;
+const circumference = 2 * Math.PI * radius;
+progress.style.strokeDasharray = circumference;
+
+function update(angle){
+  currentAngle = angle;
+  const percent = angle / 360;
+  const offset = circumference - percent * circumference;
+  progress.style.strokeDashoffset = offset;
+
+  knob.style.transform = `translate(-50%,-50%) rotate(${angle}deg)`;
+  outerIndicator.style.transform = `translateX(-50%) rotate(${angle}deg)`;
+}
+
+function getAngle(e){
+  const rect = knob.getBoundingClientRect();
+  const cx = rect.left + rect.width / 2;
+  const cy = rect.top + rect.height / 2;
+
+  const dx = e.clientX - cx;
+  const dy = e.clientY - cy;
+
+  let angle = Math.atan2(dy, dx) * 180 / Math.PI + 90;
+  if(angle < 0) angle += 360;
+
+  return angle;
+}
+
+knob.addEventListener("mousedown", ()=> isDragging = true);
+document.addEventListener("mouseup", ()=> isDragging = false);
+
+document.addEventListener("mousemove", e=>{
+  if(!isDragging) return;
+  const angle = getAngle(e);
+  update(angle);
+});
+</script>
+
+</body>
+</html>
