@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Button Pack Showcase</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #0f0f14;
+            color: white;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+        }
+
+        p {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #aaa;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .card {
+            background: #1a1a22;
+            border-radius: 14px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            transition: 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+        }
+
+        .card h2 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #00ffd5;
+        }
+
+        iframe {
+            width: 100%;
+            height: 150px;
+            border: none;
+            border-radius: 10px;
+            background: #111;
+        }
+
+        footer {
+            margin-top: 60px;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🎨 CSS Button Pack</h1>
+    <p>Live preview of all animated buttons</p>
+
+    <div class="grid">
+
+        <div class="card">
+            <h2>Button 1</h2>
+            <iframe src="Button-1.html"></iframe>
+        </div>
+
+        <div class="card">
+            <h2>Button 2</h2>
+            <iframe src="Button-2.html"></iframe>
+        </div>
+
+        <div class="card">
+            <h2>Button 3</h2>
+            <iframe src="Button-3.html"></iframe>
+        </div>
+
+        <div class="card">
+            <h2>Button 4</h2>
+            <iframe src="Button-4.html"></iframe>
+        </div>
+
+        <div class="card">
+            <h2>Button 5</h2>
+            <iframe src="Button-5.html"></iframe>
+        </div>
+
+    </div>
+
+    <footer>
+        Made with ❤️ by RK Studios
+    </footer>
+
+</body>
+</html>
