@@ -1,117 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>CSS Button Pack Showcase</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Button Pack</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, Helvetica, sans-serif;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
 
-        body {
-            background: #0f0f14;
-            color: white;
-            padding: 60px 20px;
-        }
+body {
+    background: linear-gradient(to bottom, #f8f9fc, #eef1f7);
+    color: #1c1f26;
+    padding: 80px 30px;
+}
 
-        h1 {
-            text-align: center;
-            margin-bottom: 10px;
-            font-size: 2.8rem;
-        }
+h1 {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
 
-        p {
-            text-align: center;
-            margin-bottom: 50px;
-            color: #aaa;
-            font-size: 1.1rem;
-        }
+.subtitle {
+    text-align: center;
+    color: #6b7280;
+    margin-bottom: 70px;
+    font-size: 1.1rem;
+}
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            max-width: 1300px;
-            margin: auto;
-        }
+.grid {
+    max-width: 1400px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 45px;
+}
 
-        .card {
-            background: #1a1a22;
-            border-radius: 16px;
-            padding: 25px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
-            transition: 0.3s ease;
-        }
+.card {
+    background: white;
+    border-radius: 24px;
+    padding: 30px;
+    transition: 0.4s ease;
+    box-shadow:
+        0 15px 35px rgba(0,0,0,0.08);
+}
 
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.7);
-        }
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow:
+        0 20px 45px rgba(0,0,0,0.12);
+}
 
-        .card h2 {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            color: #00ffd5;
-        }
+.card h2 {
+    margin-bottom: 25px;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    color: #3b82f6;
+}
 
-        iframe {
-            width: 100%;
-            height: 300px; /* 👈 Bigger preview */
-            border: none;
-            border-radius: 12px;
-            background: #111;
-        }
+.preview {
+    border-radius: 18px;
+    overflow: hidden;
+    background: #f3f4f6;
+    box-shadow:
+        inset 0 3px 10px rgba(0,0,0,0.05);
+}
 
-        footer {
-            margin-top: 80px;
-            text-align: center;
-            color: #666;
-            font-size: 0.95rem;
-        }
-    </style>
+iframe {
+    width: 100%;
+    height: 320px;
+    border: none;
+    display: block;
+}
+
+footer {
+    margin-top: 120px;
+    text-align: center;
+    color: #9ca3af;
+    font-size: 0.95rem;
+}
+</style>
 </head>
+
 <body>
 
-    <h1>🎨 CSS Button Pack</h1>
-    <p>Live preview of all animated buttons</p>
+<h1>🎨 CSS Button Pack</h1>
+<p class="subtitle">Live preview of all animated buttons</p>
 
-    <div class="grid">
+<div class="grid">
 
-        <div class="card">
-            <h2>Button 1</h2>
-            <iframe src="Button-1.html"></iframe>
+    <div class="card">
+        <h2>Button 1</h2>
+        <div class="preview">
+            <iframe src="Button-1.html" scrolling="no"></iframe>
         </div>
-
-        <div class="card">
-            <h2>Button 2</h2>
-            <iframe src="Button-2.html"></iframe>
-        </div>
-
-        <div class="card">
-            <h2>Button 3</h2>
-            <iframe src="Button-3.html"></iframe>
-        </div>
-
-        <div class="card">
-            <h2>Button 4</h2>
-            <iframe src="Button-4.html"></iframe>
-        </div>
-
-        <div class="card">
-            <h2>Button 5</h2>
-            <iframe src="Button-5.html"></iframe>
-        </div>
-
     </div>
 
-    <footer>
-        Made with ❤️ by RK Studios
-    </footer>
+    <div class="card">
+        <h2>Button 2</h2>
+        <div class="preview">
+            <iframe src="Button-2.html" scrolling="no"></iframe>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Button 3</h2>
+        <div class="preview">
+            <iframe src="Button-3.html" scrolling="no"></iframe>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Button 4</h2>
+        <div class="preview">
+            <iframe src="Button-4.html" scrolling="no"></iframe>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Button 5</h2>
+        <div class="preview">
+            <iframe src="Button-5.html" scrolling="no"></iframe>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+Made with ❤️ by RK Studios
+</footer>
 
 </body>
 </html>
