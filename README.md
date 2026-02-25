@@ -18,6 +18,18 @@ All components are:
 - ✅ Smooth animations  
 
 ---
+## 📸 Examlpes
+<p align="center">
+  <img width="32%" src="https://github.com/user-attachments/assets/dcbe23b5-2d3b-455b-b3e8-defd9721f0a7" />
+  <img width="32%" src="https://github.com/user-attachments/assets/c30b1050-909a-4b9d-8be9-041f2d97f1a7" />
+  <img width="32%" src="https://github.com/user-attachments/assets/8b705272-306a-47e5-82b1-a4291fb3c8ce" />
+</p>
+
+<p align="center">
+  <img width="48%" src="https://github.com/user-attachments/assets/d3abc434-4a7f-4a1d-875d-8a7c6be79435" />
+  <img width="48%" src="https://github.com/user-attachments/assets/39ce20fb-88a6-4390-9137-51d603c2c2ba" />
+</p>
+---
 
 ## 🚀 Installation & Usage
 
@@ -94,3 +106,7 @@ If you like this project:
 ## 👑 Author
 
 Made with ❤️ by **RK Studios**
+
+---
+# Note-
+## i will be adding more assets in future
