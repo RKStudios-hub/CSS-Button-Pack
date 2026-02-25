@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Sky Theme Toggle</title>
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#cfd3da;
+  font-family:sans-serif;
+}
+
+.toggle{
+  position:relative;
+  width:300px;
+  height:110px;
+  border-radius:80px;
+  overflow:hidden;
+  cursor:pointer;
+  transition:0.6s ease;
+  box-shadow:
+    0 10px 20px rgba(0,0,0,0.15),
+    inset 0 3px 6px rgba(255,255,255,0.4);
+}
+
+/* SKY */
+.sky{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:linear-gradient(135deg,#1515b8,#0c7c8c);
+  transition:0.8s ease;
+}
+
+.toggle.active .sky{
+  background:linear-gradient(135deg,#4cc9f0,#c77dff);
+}
+
+/* ===== STARS ===== */
+.star{
+  position:absolute;
+  background:white;
+  border-radius:50%;
+  opacity:0;
+  animation:twinkle 2s infinite alternate;
+  box-shadow:0 0 6px white;
+}
+
+@keyframes twinkle{
+  from{opacity:0.4;}
+  to{opacity:1;}
+}
+
+/* Random star sizes + positions */
+.star:nth-child(2){ width:3px;height:3px; top:20px; left:40px;}
+.star:nth-child(3){ width:4px;height:4px; top:35px; left:90px;}
+.star:nth-child(4){ width:2px;height:2px; top:60px; left:130px;}
+.star:nth-child(5){ width:3px;height:3px; top:25px; left:170px;}
+.star:nth-child(6){ width:4px;height:4px; top:50px; left:210px;}
+.star:nth-child(7){ width:2px;height:2px; top:40px; left:250px;}
+.star:nth-child(8){ width:3px;height:3px; top:15px; left:200px;}
+.star:nth-child(9){ width:2px;height:2px; top:70px; left:80px;}
+.star:nth-child(10){ width:3px;height:3px; top:55px; left:40px;}
+.star:nth-child(11){ width:4px;height:4px; top:30px; left:230px;}
+.star:nth-child(12){ width:2px;height:2px; top:75px; left:180px;}
+
+.toggle:not(.active) .star{
+  opacity:1;
+}
+
+.toggle.active .star{
+  opacity:0;
+}
+
+/* ===== METEOR ===== */
+.meteor{
+  position:absolute;
+  width:2px;
+  height:60px;
+  background:linear-gradient(to top, white, transparent);
+  top:-40px;
+  left:260px;
+  transform:rotate(45deg);
+  opacity:0;
+  filter:drop-shadow(0 0 6px white);
+}
+
+.toggle:not(.active) .meteor{
+  animation:meteorMove 3s linear infinite;
+}
+
+@keyframes meteorMove{
+  0%{
+    transform:translate(0,0) rotate(45deg);
+    opacity:0;
+  }
+  20%{
+    opacity:1;
+  }
+  80%{
+    opacity:1;
+  }
+  100%{
+    transform:translate(-180px,180px) rotate(45deg);
+    opacity:0;
+  }
+}
+
+/* CLOUD (many circles) */
+.cloud{
+  position:absolute;
+  bottom:-25px;
+  left:10px;
+  width:240px;
+  height:120px;
+  opacity:0;
+  transition:0.6s ease;
+}
+
+.cloud span{
+  position:absolute;
+  background:linear-gradient(to top, rgba(255,255,255,0.7), rgba(255,255,255,0.95));
+  border-radius:50%;
+}
+
+.cloud span:nth-child(1){ width:80px;height:80px;left:0;bottom:0;}
+.cloud span:nth-child(2){ width:100px;height:100px;left:40px;bottom:10px;}
+.cloud span:nth-child(3){ width:70px;height:70px;left:100px;bottom:0;}
+.cloud span:nth-child(4){ width:90px;height:90px;left:150px;bottom:5px;}
+.cloud span:nth-child(5){ width:60px;height:60px;left:190px;bottom:0;}
+.cloud span:nth-child(6){ width:75px;height:75px;left:70px;bottom:-10px;}
+.cloud span:nth-child(7){ width:65px;height:65px;left:130px;bottom:-5px;}
+.cloud span:nth-child(8){ width:55px;height:55px;left:20px;bottom:-5px;}
+
+.toggle.active .cloud{
+  opacity:1;
+}
+
+/* KNOB */
+.knob{
+  position:absolute;
+  width:80px;
+  height:80px;
+  border-radius:50%;
+  background:#e6e9ef;
+  top:15px;
+  right:15px;
+  transition:0.6s cubic-bezier(.68,-0.55,.27,1.55);
+  box-shadow:
+    0 6px 14px rgba(0,0,0,0.25),
+    inset 0 4px 6px rgba(255,255,255,0.9);
+}
+
+.toggle.active .knob{
+  right:calc(100% - 95px);
+  background:#ffea00;
+}
+
+.watermark{
+  margin-top:20px;
+  font-size:13px;
+  color:#444;
+  opacity:0.8;
+}
+</style>
+</head>
+<body>
+
+<div>
+  <div class="toggle" id="toggle">
+    <div class="sky"></div>
+
+    <!-- 12 Stars -->
+    <div class="star"></div><div class="star"></div>
+    <div class="star"></div><div class="star"></div>
+    <div class="star"></div><div class="star"></div>
+    <div class="star"></div><div class="star"></div>
+    <div class="star"></div><div class="star"></div>
+    <div class="star"></div><div class="star"></div>
+
+    <div class="meteor"></div>
+
+    <div class="cloud">
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="knob"></div>
+  </div>
+
+  <div class="watermark">Made with ❤️ by RK Studios</div>
+</div>
+
+<script>
+document.getElementById("toggle").addEventListener("click", function(){
+  this.classList.toggle("active");
+});
+</script>
+
+</body>
+</html>
