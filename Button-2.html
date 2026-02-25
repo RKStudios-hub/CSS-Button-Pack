@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kawaii Button</title>
+<title>Ultra Kawaii Button</title>
 
 <style>
 :root{
@@ -19,6 +19,7 @@ body{
   margin:0;
   height:100vh;
   display:flex;
+  flex-direction:column;
   justify-content:center;
   align-items:center;
   background:linear-gradient(135deg,#fff5fb,#ffe6f5);
@@ -53,6 +54,7 @@ body{
     inset 0 -4px 8px rgba(255,255,255,0.7);
 
   transition:all 0.2s ease;
+  margin-bottom:25px;
 }
 
 /* Jelly press */
@@ -73,7 +75,6 @@ body{
 /* FACE */
 .face{
   display:inline-block;
-  position:relative;
 }
 
 .eye{
@@ -82,7 +83,7 @@ body{
 }
 
 @keyframes blink{
-  0%, 95%, 100%{ transform:scaleY(1); }
+  0%,95%,100%{ transform:scaleY(1); }
   97%{ transform:scaleY(0.1); }
 }
 
@@ -98,14 +99,8 @@ body{
 }
 
 @keyframes sparkleFloat{
-  0%{
-    transform:translateY(0) scale(0.5);
-    opacity:1;
-  }
-  100%{
-    transform:translateY(-40px) scale(1.4);
-    opacity:0;
-  }
+  0%{ transform:translateY(0) scale(0.5); opacity:1; }
+  100%{ transform:translateY(-40px) scale(1.4); opacity:0; }
 }
 
 .kawaii-btn:hover .sparkle{
@@ -125,14 +120,8 @@ body{
 }
 
 @keyframes heartBurst{
-  0%{
-    transform:translateY(0) scale(0.6);
-    opacity:1;
-  }
-  100%{
-    transform:translateY(-60px) scale(1.5);
-    opacity:0;
-  }
+  0%{ transform:translateY(0) scale(0.6); opacity:1; }
+  100%{ transform:translateY(-60px) scale(1.5); opacity:0; }
 }
 
 .kawaii-btn:focus .heart{
@@ -152,6 +141,24 @@ body{
 .kawaii-btn:hover{
   animation:pulse 2s infinite;
 }
+
+/* WATERMARK */
+.watermark{
+  font-size:14px;
+  color:#ff6fb5;
+  opacity:0.8;
+  letter-spacing:1px;
+  transition:0.3s ease;
+}
+
+.watermark span{
+  font-weight:bold;
+}
+
+.watermark:hover{
+  opacity:1;
+  text-shadow:0 0 8px rgba(255,111,181,0.6);
+}
 </style>
 </head>
 
@@ -162,16 +169,18 @@ body{
     <span class="eye">＾</span>◡<span class="eye">＾</span>
   </span>
   &nbsp;Click Me♡
-  
-  <!-- Sparkles -->
+
   <span class="sparkle"></span>
   <span class="sparkle"></span>
   <span class="sparkle"></span>
 
-  <!-- Hearts -->
   <span class="heart">💗</span>
   <span class="heart">💖</span>
 </button>
+
+<div class="watermark">
+  Made with 🖤 by <span>RK Studios</span>
+</div>
 
 </body>
 </html>
